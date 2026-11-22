@@ -4,7 +4,7 @@
   "description": "AI-Powered Minecraft Jarvis Assistant Bot with Google Gemini & Persistent Connection Management",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "node --max-old-space-size=256 index.js",
     "test": "node tests/runAllTests.js",
     "check": "node --check index.js"
   },
