@@ -1,0 +1,23 @@
+[Unit]
+Description=24/7 Minecraft AI Jarvis Assistant Bot
+After=network.target
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/home/ubuntu/24-7-minercaft-bot
+ExecStart=/usr/bin/node --max-old-space-size=256 index.js
+Restart=always
+RestartSec=10
+KillMode=process
+TimeoutStopSec=15
+StandardOutput=journal
+StandardError=journal
+Environment=NODE_ENV=production
+
+# Security hardening
+NoNewPrivileges=true
+ProtectSystem=full
+
+[Install]
+WantedBy=multi-user.target

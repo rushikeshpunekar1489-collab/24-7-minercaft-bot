@@ -87,7 +87,7 @@ const config = {
 
   gemini: {
     apiKey: process.env.GEMINI_API_KEY || "",
-    model: process.env.GEMINI_MODEL || "gemini-2.5-flash",
+    model: process.env.GEMINI_MODEL || "gemini-3.8-flash",
     requestTimeoutMs: parseInt(process.env.GEMINI_TIMEOUT_MS || "15000", 10),
     maxRetries: parseInt(process.env.GEMINI_MAX_RETRIES || "2", 10),
   },
