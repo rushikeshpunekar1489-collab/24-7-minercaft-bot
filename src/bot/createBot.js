@@ -11,10 +11,17 @@ const logger = require("../utils/logger");
  * @returns {object} Mineflayer bot instance
  */
 function createBotInstance() {
-  const versionParam =
-    config.server.version && config.server.version.toLowerCase() !== "auto"
-      ? config.server.version
-      : false;
+  let versionParam = false;
+  if (config.server.version && config.server.version.toLowerCase() !== "auto") {
+    if (minecraftData(config.server.version)) {
+      versionParam = config.server.version;
+    } else {
+      logger.warn(
+        `[Bot] Version '${config.server.version}' is not yet supported in client-side minecraft-data schemas. Falling back to auto-detect.`
+      );
+      versionParam = false;
+    }
+  }
 
   logger.connection(
     `[Bot] Connecting to ${config.server.host}:${config.server.port} as '${config.bot.username}' (Version config: ${config.server.version})`
